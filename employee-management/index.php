@@ -45,7 +45,7 @@ $result1 = mysqli_query($connection, $sql);
             <table class="table table-sm">
                 <thead class="table-light">
                     <tr>
-                        <th>Employee Name</th>
+                        <th colspan="2" style="text-align: center;">Employee Name</th>
                         <th>Designation</th>
                         <th>Email</th>
                         <th>Edit / Delete</th>
@@ -57,6 +57,17 @@ $result1 = mysqli_query($connection, $sql);
 
                     ?>
                         <tr>
+                            <?php
+                            if ($rows['emp_image'] != '') {
+                            ?>
+                                <td><img src="employee_uploads/<?php echo $rows['emp_image']; ?>" alt="Image" width="30"></td>
+                            <?php
+                            } else {
+                            ?>
+                                <td><img src="images/propic.svg" alt="Image" width="40" title="No profile photo"></td>
+                            <?php
+                            }
+                            ?>
                             <td><?php echo $rows['emp_name']; ?></td>
                             <td><?php echo $rows['emp_designation'] ?></td>
                             <td><?php echo $rows['mail_id'] ?></td>
